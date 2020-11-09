@@ -106,9 +106,9 @@ function cityList(cityArray) {
 
 //five-day forecast
 function forecast(city) {
-    var weatherurl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${apiKey}`;
+    var forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${apiKey}`;
     $.ajax({
-        url: weatherurl,
+        url: forecastURL,
         type: "GET",
     })
         .then(function (response2) {
