@@ -1,121 +1,58 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html> -->
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
-    />
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <script
-      src="https://kit.fontawesome.com/6abacbc5ed.js"
-      crossorigin="anonymous"
-    ></script>
-    <title>Weatherest</title>
-  </head>
 
-  <body class="flex-column min-100-vh">
-    <header class="hero">
-      <h1 class="app-title">WEATHEREST <i class="fas fa-frog"></i></h1>
-      <p>Search for a city to view weather information and a 5-day forecast</p>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+  <link rel="stylesheet" href="./assets/css/style.css" />  
+  <title>WEATHER BOSS</title>
+</head>
 
-    <main class="flex-row justify-space-between">
-      <div class="col-12 col-md-4">
-        <div class="card">
-          <h3 class="card-header text-uppercase">Search for a city</h3>
-          <form id="user-form" class="card-body">
-            <input
-              type="text"
-              id="input-value"
-              autofocus="true"
-              class="form-input"
-            />
-            <button type="submit" id="search-button" class="btn">
-              Find City
-            </button>
-          </form>
-        </div>
-        <div class="card">
-          <h3 class="card-header text-uppercase">Search History</h3>
-          <div class="card-body" id="language-buttons">
-            <button class="btn">placeholder</button>
+<body>
+  <header class="hero">
+    <h1 id ="hero-title" class="align-items-center">WEATHER BOSS 3000 <i class="fas fa-frog"></i></h1>
+  </header>
+  <div class="d-flex flex-column flex-md-row flex-sm-column">
+    <div id="search-field" class="col-md-2 col-12 p-3">
+      <div>
+        <h4 class="pb-3">City Search</h4>
+        <div class="input-group pb-3">
+          <input class="form-input" id="search-terms" type="text" placeholder="Enter city" aria-label="Search">
+          <div>
+            <button class="btn" id="search-btn" type="button">Send it</button>
           </div>
         </div>
       </div>
-
-      <div class="col-12 col-md-8">
-        <div class="main-info">
-          <h2 class="city-container" id="city-search-term">
-            City <span id="date-field"></span>
-          </h2>
-          <div id="icon-field" class="image-generation"></div>
-          <ul>
-            <li class="main-info-list">
-              Temperature: <span id="temp-field"></span> °F
-            </li>
-            <li class="main-info-list">
-              Humidity: <span id="humidity-field"></span>%
-            </li>
-            <li class="main-info-list">
-              Wind Speed: <span id="wind-field"></span> mph
-            </li>
-            <li class="main-info-list">
-              UV Index: <span id="uv-field"></span>
-            </li>
-          </ul>
+      <h4>Recent:</h4>
+      <div id="search-history" class="w-100 btn-group-vertical "></div>
+    </div>
+    <div class="col-12 col-md-10">
+      <div class="form-group pt-3">
+        <div class="table border" id="table2">
+          <div class="row p-3">
+            <div class="col-md-9 weather-items">
+              <div class="city" id="currentDay"></div>
+              <div class="temperature"></div>
+              <div class="humidity"></div>
+              <div class="windspeed"></div>
+              <div class="uvIndex"></div>
+            </div>
+          </div>
         </div>
-
-        <h3 id="forecast-header" class="card-header">5-Day Forecast:</h3>
-        <div class="card-body" id="five-day-cards">
-          <div class="forecast-card">
-            <h4 class="forecast-card-title">date placeholder</h4>
-            <ul>
-              <li id="card-icon-1"></li>
-              <li id="card-temp-1"></li>
-              <li id="card-humidity-1"></li>
-            </ul>
-          </div>
-          <div class="forecast-card">
-            <h4 class="forecast-card-title">date placeholder</h4>
-            <ul>
-              <li id="card-icon-1"></li>
-              <li id="card-temp-1"></li>
-              <li id="card-humidity-1"></li>
-            </ul>
-          </div>
-          <div class="forecast-card">
-            <h4 class="forecast-card-title">date placeholder</h4>
-            <ul>
-              <li id="card-icon-1"></li>
-              <li id="card-temp-1"></li>
-              <li id="card-humidity-1"></li>
-            </ul>
-          </div>
-          <div class="forecast-card">
-            <h4 class="forecast-card-title">date placeholder</h4>
-            <ul>
-              <li id="card-icon-1"></li>
-              <li id="card-temp-1"></li>
-              <li id="card-humidity-1"></li>
-            </ul>
-          </div>
-          <div class="forecast-card">
-            <h4 class="forecast-card-title">date placeholder</h4>
-            <ul>
-              <li id="card-icon-1"></li>
-              <li id="card-temp-1"></li>
-              <li id="card-humidity-1"></li>
-            </ul>
-          </div>
+        <h3>5-Day Forecast:</h3>
+        <div class="d-flex flex-column flex-md-row justify-content-between forecast-cards" id="5-day-forecast">
         </div>
       </div>
-    </main>
+    </div>
+  </div>
 
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="./assets/js/script.js"></script>
+</body>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="./assets/js/script.js"></script>
-  </body>
 </html>
